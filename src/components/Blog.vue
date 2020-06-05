@@ -28,7 +28,8 @@ export default {
             this.blogPosts.push({'title' : this.title, 'content': this.content})
             // Make into a modal
             alert('Your post has been submitted\nTitle: ' + this.title + '\nContent: ' + this.content);
-            console.log(this.blogPosts);
+            this.title = '';
+            this.content = '';
         },
     }
 }
