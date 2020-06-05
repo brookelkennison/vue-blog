@@ -13,10 +13,7 @@ export default {
     name: 'Header',
     data () {
         return {
-            handlers: {
-                showForm: this.showCreatePosts,
-                showBlog: this.showBlogPosts
-            }
+
         }
     },
     props: {
@@ -28,7 +25,7 @@ export default {
         },
         showBlogPosts: function () {
              this.$emit('showBlogPosts', false)
-        }
+        },
     }
 }
 </script>

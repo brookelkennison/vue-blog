@@ -2,11 +2,10 @@
     <div>
         <h2>Create a Post</h2>
         <p>Title:</p>
-        <input type="text" v-model.lazy='title'>
+        <input type="text" v-model='title'>
         <p>Content:</p>
         <textarea name="" id="" cols="30" rows="10" v-model='content'></textarea>
-        <button v-on:click='postEntry()'>Post</button>
-        <h4>{{title}}</h4>
+        <button @click='postEntry()'>Post</button>
     </div>
 </template>
 
@@ -17,17 +16,20 @@ export default {
         return {
             title: '',
             content: '',
-        }
+        } 
+    },  
+    props: {
+            blogPosts: Array,
     },
-    props: [
-        
-    ],
     methods: {
         postEntry () {
-            console.log(this.title)
-            console.log(this.content)
-            alert('Your post has been submitted');
-        }
+            // this.blogTitles.push(this.title);
+            // this.blogContent.push(this.content);
+            this.blogPosts.push({'title' : this.title, 'content': this.content})
+            // Make into a modal
+            alert('Your post has been submitted\nTitle: ' + this.title + '\nContent: ' + this.content);
+            console.log(this.blogPosts);
+        },
     }
 }
 </script>
