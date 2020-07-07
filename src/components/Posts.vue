@@ -5,10 +5,10 @@
         <div v-if="blogPosts.length == 0">
             <h3>There are currently no blog posts to show. Please add a post to view it!</h3>
         </div>
-        <div v-for="posts in blogPosts" :key="posts">
+        <div v-for="(blogPost, idx) in blogPosts" :key='idx'>
             <hr>
-            <h3>Title: {{posts.title}}</h3>
-            <p>Content: {{posts.content}}</p>
+            <h3>Title: {{blogPost.title}}</h3>
+            <p>Content: {{blogPost.content}}</p>
             <hr>
         </div>
     </div>
@@ -25,6 +25,11 @@ export default {
     props: {
        blogPosts: Array,
     },
+    methods: {
+        deletePost(){
+            console.log(this.blogPosts)
+        }
+    }
 }
 </script>
 

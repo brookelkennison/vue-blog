@@ -2,7 +2,7 @@
     <div>
         <h2>Create a Post</h2>
         <p>Title:</p>
-        <input type="text" v-model='title'>
+        <input type="text" v-model.lazy='title'>
         <p>Content:</p>
         <textarea name="" id="" cols="30" rows="10" v-model='content'></textarea>
         <button @click='postEntry()'>Post</button>
@@ -16,7 +16,7 @@ export default {
         return {
             title: '',
             content: '',
-        } 
+        }
     },  
     props: {
             blogPosts: Array,
@@ -31,6 +31,17 @@ export default {
             this.title = '';
             this.content = '';
         },
+    },
+    mounted() {
+        if (localStorage.title) {
+            this.title = localStorage.title
+        }      
+    },
+    watch: {
+        title(newTitle) {
+            localStorage.title = newTitle;
+            console.log(localStorage.title)
+        }
     }
 }
 </script>
