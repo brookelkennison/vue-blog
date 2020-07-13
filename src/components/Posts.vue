@@ -5,7 +5,7 @@
         <div v-if="blogPosts.length == 0">
             <h3>There are currently no blog posts to show. Please add a post to view it!</h3>
         </div>
-        <div v-for="(blogPost, idx) in blogPosts" :key='idx'>
+        <div v-for="blogPost in blogPosts" :key='blogPost.id'>
             <hr>
             <h3>Title: {{blogPost.title}}</h3>
             <p>Content: {{blogPost.content}}</p>
