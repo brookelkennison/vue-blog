@@ -23,26 +23,14 @@ export default {
     },
     methods: {
         postEntry () {
-            // this.blogTitles.push(this.title);
-            // this.blogContent.push(this.content);
-            this.blogPosts.push({'title' : this.title, 'content': this.content})
-            // Make into a modal
+            this.blogPosts.push({'title' : this.title, 'content': this.content});
+            this.$emit('postEntry', this.blogPosts)
+            // Make into a modal & add option to view
             alert('Your post has been submitted\nTitle: ' + this.title + '\nContent: ' + this.content);
             this.title = '';
             this.content = '';
         },
     },
-    mounted() {
-        if (localStorage.title) {
-            this.title = localStorage.title
-        }      
-    },
-    watch: {
-        title(newTitle) {
-            localStorage.title = newTitle;
-            console.log(localStorage.title)
-        }
-    }
 }
 </script>
 

@@ -1,9 +1,8 @@
 // Next Steps:
-//   Create an array for blog posts to get pushed to after posted.
+//   Save data using localStorage
+//   Retitle Blog.vue to BlogCreate.vue
 //   Create an underline style under the page you are on
 //   Create filter to filter blog posts
-
-
 
 <template>
   <div id="app">
@@ -11,7 +10,7 @@
       @showCreatePosts="updateBlogBoolean" 
       @showBlogPosts="updateBlogBoolean">
     </Header>
-    <Blog v-show="blogEntry" :blogPosts="blogPosts" ></Blog>
+    <Blog v-show="blogEntry" :blogPosts="blogPosts" @postEntry="saveToLocal"></Blog>
     <Posts v-show="!blogEntry"  :blogPosts="blogPosts"></Posts>
   </div>
 </template>
@@ -32,9 +31,12 @@ export default {
     return {
       blogEntry: false,
       blogPosts: [],
-      // blogTitles: [],
-      // blogContent: [],
     }
+  },
+  mounted() {
+    if (localStorage.getItem('blogPosts')) {
+        this.blogPosts = JSON.parse(localStorage.getItem('blogPosts'))
+    }     
   },
   methods: {
     updateBlogBoolean (updatedBlogBoolean) {
@@ -42,7 +44,11 @@ export default {
     },
     updateBlogPosts (updatedBlogPosts) {
       this.blogPosts = updatedBlogPosts
-      console.log(this.blogPosts.blogTitles.length)
+    },
+    saveToLocal () {
+      const parsed = JSON.stringify(this.blogPosts);
+      localStorage.setItem('blogPosts', parsed);
+      console.log(localStorage.getItem('blogPosts'))
     }
   }
 }

@@ -5,8 +5,8 @@
                 <h1>Vue Blog</h1>
             </div>
             <div id="menu-items">
-                <p v-on:click="showBlogPosts()">Read the Blog</p>
-                <p v-on:click="showCreatePosts()">Create a Post</p>
+                <p @click="showBlogPosts()">Read the Blog</p>
+                <p @click="showCreatePosts()">Create a Post</p>
             </div>
         </header>
     </div>
